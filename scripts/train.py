@@ -49,6 +49,7 @@ def main():
     dataset = construire_dataset(tokenizer)
     print(f"{len(dataset)} exemples")
 
+    model.enable_input_require_grads()  # requis pour le gradient checkpointing avec LoRA
     model = get_peft_model(model, LoraConfig(
         r=16, lora_alpha=32, lora_dropout=0.05, task_type="CAUSAL_LM",
         target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
@@ -66,8 +67,9 @@ def main():
             learning_rate=args.lr,
             lr_scheduler_type="cosine",
             warmup_steps=5,
-            per_device_train_batch_size=4,
-            gradient_accumulation_steps=2,
+            per_device_train_batch_size=1,
+            gradient_accumulation_steps=8,
+            gradient_checkpointing=True,
             logging_steps=5,
             save_strategy="no",
             report_to="none",
