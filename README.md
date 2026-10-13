@@ -1,12 +1,16 @@
 # IGOR 2.0
 
-## Ajouter ton fichier d'IA
+## Personnaliser IGOR avec Google Colab
 
-1. Sur GitHub, ouvre le dossier [`ia/`](ia/).
-2. Clique sur **Add file → Upload files**.
-3. Glisse ton fichier (prompt, config, code…), puis clique sur **Commit changes**.
+[![Ouvrir dans Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/julienots/IGOR-2.0/blob/ccr-2c045565-tn3tpw/colab/IGOR_personnalisation.ipynb)
 
-## Personnaliser IGOR
+Le notebook [`colab/IGOR_personnalisation.ipynb`](colab/IGOR_personnalisation.ipynb)
+affine un modèle (Gemma 3 1B par défaut) avec la personnalité d'IGOR, puis le
+reconvertit en fichier `.litertlm` enregistré dans ton Google Drive (`IGOR/igor.litertlm`).
 
-Remplis [`personnalisation.md`](personnalisation.md) avec la personnalité et les
-spécificités que tu veux. Elles seront ensuite intégrées dans ton fichier d'IA.
+1. Ouvre le notebook dans Colab (bouton ci-dessus).
+2. Choisis un GPU : **Exécution → Modifier le type d'exécution → T4**.
+3. Remplis la configuration et les exemples de conversations (étapes 1 et 2).
+4. Exécute les cellules une par une.
+
+Tu peux t'aider de [`personnalisation.md`](personnalisation.md) pour préparer la personnalité.
