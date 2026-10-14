@@ -40,6 +40,10 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--model", required=True)
     p.add_argument("--out", required=True)
+    p.add_argument("--quantization", default="dynamic_wi8_afp32",
+                   help="dynamic_wi4_afp32 pour une version légère (téléphones avec peu de RAM)")
+    p.add_argument("--cache-length", type=int, default=4096,
+                   help="longueur maximale de la conversation, en tokens")
     args = p.parse_args()
 
     os.makedirs(args.out, exist_ok=True)
@@ -51,6 +55,8 @@ def main():
         model=args.model,
         output_dir=args.out,
         jinja_chat_template_override=template_path,
+        quantization_recipe=args.quantization,
+        cache_length=args.cache_length,
         sampler_temperature=0.7,
         sampler_top_p=0.9,
         sampler_top_k=40,
