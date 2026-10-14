@@ -16,7 +16,7 @@ IGOR est fiable sur ce qu'il a appris (progressions, programmes, notation en com
 mais peut encore se tromper sur des questions éloignées de ses exemples. Plus il y a
 d'exemples dans `data/`, meilleur il est.
 
-Pour l'utiliser sur ton téléphone : télécharge `igor.litertlm` (bouton *Download* sur la page du
+Pour l'utiliser sur ton téléphone : télécharge `igor-v2.litertlm` (bouton *Download* sur la page du
 fichier), puis importe-le dans ton appli (par exemple Google AI Edge Gallery : bouton **+** →
 importer un modèle).
 
