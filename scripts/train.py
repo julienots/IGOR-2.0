@@ -51,7 +51,7 @@ def main():
 
     model.enable_input_require_grads()  # requis pour le gradient checkpointing avec LoRA
     model = get_peft_model(model, LoraConfig(
-        r=16, lora_alpha=32, lora_dropout=0.05, task_type="CAUSAL_LM",
+        r=32, lora_alpha=64, lora_dropout=0.05, task_type="CAUSAL_LM",
         target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
                         "gate_proj", "up_proj", "down_proj"],
     ))
