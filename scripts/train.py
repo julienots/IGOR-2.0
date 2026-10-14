@@ -71,12 +71,18 @@ def main():
             gradient_accumulation_steps=8,
             gradient_checkpointing=True,
             logging_steps=5,
-            save_strategy="no",
+            # Points de sauvegarde réguliers : l'entraînement reprend là où il s'est arrêté
+            # si la machine redémarre.
+            save_strategy="steps",
+            save_steps=10,
+            save_total_limit=1,
             report_to="none",
             use_cpu=not torch.cuda.is_available(),
         ),
     )
-    trainer.train()
+    dossier = args.out + "-lora"
+    reprise = os.path.isdir(dossier) and any(d.startswith("checkpoint-") for d in os.listdir(dossier))
+    trainer.train(resume_from_checkpoint=True if reprise else None)
 
     model = trainer.model.merge_and_unload()
     model.save_pretrained(args.out, safe_serialization=True)
