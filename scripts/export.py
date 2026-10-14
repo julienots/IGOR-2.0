@@ -54,6 +54,8 @@ def main():
         sampler_temperature=0.7,
         sampler_top_p=0.9,
         sampler_top_k=40,
+        # Conversion plus économe en mémoire (nécessaire pour le 1.7B sur 16 Go de RAM).
+        experimental_lightweight_conversion=True,
     )
 
 
